@@ -1,0 +1,47 @@
+{% extends "usuarios/base.html" %}
+
+{% block content %}
+
+{% for dispositivo in dispositivos%}
+
+
+   <form method="POST" action="/update" enctype = 'multipart/form-data'>
+            Id:
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" readonly = "True" type="text" value = '{{ dispositivo [0]}}' name="id" placeholder="Id" autofocus="">
+                </div>
+            </div>
+
+            Nombre del dispositivo:
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" value = '{{ dispositivo [1]}}' name="nombre" placeholder="Nombre del dispositivo" autofocus="">
+                </div>
+            </div>
+
+            Versión del dispositivo:
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="text" value = '{{ dispositivo [2]}}' name="version" placeholder="Versión del dispositivo" autofocus="">
+                </div>
+            </div>
+
+          Usuario:
+          <div class="field">
+                <div class="select is-large">
+                    <select class="select is-large" type="text" value='{{ dispositivo [3]}}' name="usuario" aria-label=".form-select-lg" style = "width:500px;">
+                              {%for user in user_name%}
+                                  <option value={{ user [1]}}>{{ user [0]}}</option>
+                              {%endfor%}
+                              
+                      </select>
+                </div>
+            </div>
+            
+            <button class="button is-block is-info is-large is-fullwidth">Actualizar</button>
+        </form>
+
+{%endfor%}
+
+{% endblock %}
