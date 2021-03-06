@@ -1,0 +1,37 @@
+{% extends "usuarios/base.html" %}
+
+{% block content %}
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre del dispositivo</th>
+              <th>Usuario</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for dispositivo in dispositivos%}
+          <tr>
+
+
+              <td>{{dispositivo [0]}}</td>
+              <td>{{dispositivo [1]}}</td>
+              <td>{%for usuario in usuarios%}
+                    {%if dispositivo [3] == usuario [0]%}
+                          {{ usuario [1] }}
+                    {%endif%}
+
+                  {%endfor%}</td>
+              <td> <a href = "/edit/{{ dispositivo [0] }}" > Editar </a> </td>
+            </tr>
+
+          {% endfor%}
+  
+          </tbody>
+        </table>
+
+
+{% endblock %}
